@@ -1,14 +1,16 @@
 # taller-master-ugr
 A repository to showcase how GitHub works to master students
 
-# Master of the Universe Level Exercises
+# Master of the Universe Level Exercise
 
-Welcome to the Master of the Universe level! These expert-level exercises focus on repository security, branch protection, and professional best practices for team collaboration.
+Welcome to the Master of the Universe level! This expert-level exercise focuses on repository security, branch protection rules, and professional best practices including GPG signing for verified commits.
 
-## Exercise 1 - Branch Protection Rules and Pull Request Workflows
-**Objective**: Implement enterprise-grade branch protection and establish secure collaboration workflows.
+## Exercise - Branch Protection Rules and Security Best Practices (GPG Signing & Sensitive Data Management)
+**Objective**: Implement enterprise-grade branch protection rules and security best practices including GPG-signed verified commits and secure data management.
 
-**Tasks - Part A: Set Up Branch Protection on GitHub**:
+**Tasks**:
+
+### Part 1: Set Up Branch Protection Rules on GitHub
 1. Navigate to your repository on GitHub
 2. Go to Settings → Branches → Add branch protection rule
 3. Configure protection for the `main` branch:
@@ -16,89 +18,44 @@ Welcome to the Master of the Universe level! These expert-level exercises focus 
    * ✅ Require a pull request before merging
    * ✅ Require approvals (at least 1)
    * ✅ Dismiss stale pull request approvals when new commits are pushed
-   * ✅ Require review from Code Owners (create a CODEOWNERS file)
+   * ✅ Require review from Code Owners (reference the existing CODEOWNERS file)
    * ✅ Require status checks to pass before merging
    * ✅ Require branches to be up to date before merging
    * ✅ Require conversation resolution before merging
+   * ✅ Require signed commits (for master-of-the-universe level)
    * ✅ Include administrators (enforce rules on admins too)
 
-4. Create a `CODEOWNERS` file in the repository root:
-   ```bash
-   # CODEOWNERS file
-   # These owners will be requested for review when someone opens a PR
-   
-   # Global owners
-   * @your-username
-   
-   # Specific directory owners
-   /docs/ @doc-team
-   /src/security/ @security-team
-   *.sql @database-team
-   ```
+4. Review the existing `CODEOWNERS` file in the repository root
+5. Understand how code owners are automatically requested for review on PRs
 
-**Tasks - Part B: Protected Branch Workflow**:
-1. Try to push directly to main (should be blocked):
+### Part 2: Test Protected Branch Workflow
+1. Try to push directly to main (should be blocked if protections are configured on GitHub):
    ```bash
    git checkout main
+   git pull origin main
    echo "test" > direct-push.txt
    git add direct-push.txt
    git commit -m "Attempting direct push"
-   git push origin main  # This should fail!
+   git push origin main  # This should fail if protections are active!
    ```
 
-2. Proper workflow - create a PR:
+2. Proper workflow - create a feature branch and PR:
    ```bash
+   git checkout master-of-the-universe
    git checkout -b feature/protected-workflow
-   echo "Proper workflow" > workflow.txt
+   echo "Proper workflow following branch protection" > workflow.txt
    git add workflow.txt
-   git commit -m "feat: Add workflow documentation"
+   git commit -S -m "feat: Add workflow documentation"
    git push origin feature/protected-workflow
    ```
 
 3. On GitHub:
-   * Create a Pull Request
-   * Request reviews from required reviewers
-   * Wait for status checks (CI/CD) to pass
-   * Address review comments
-   * Get required approvals
-   * Merge using the appropriate strategy (squash, rebase, or merge)
+   * Create a Pull Request to main
+   * Note the required reviews and checks
+   * Observe code owner review requests
+   * Document the protection rules in action
 
-**Tasks - Part C: Implement Status Checks**:
-1. Create a GitHub Actions workflow for status checks (`.github/workflows/pr-checks.yml`):
-   ```yaml
-   name: PR Checks
-   
-   on:
-     pull_request:
-       branches: [ main ]
-   
-   jobs:
-     lint:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         - name: Run linters
-           run: echo "Running linters..."
-     
-     test:
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         - name: Run tests
-           run: echo "Running tests..."
-   ```
-
-**Success Criteria**:
-- Main branch is protected and cannot accept direct pushes
-- All changes must go through Pull Request review
-- Code owners are automatically requested for review
-- Status checks must pass before merging
-- You understand the balance between security and workflow efficiency
-
-## Exercise 2 - Security Best Practices: GPG Signing and Sensitive Data Management
-**Objective**: Implement commit signing for verified commits and learn to manage sensitive data securely.
-
-**Tasks - Part A: Set Up GPG Commit Signing**:
+### Part 3: Set Up GPG Commit Signing for Verified Commits
 1. Generate a GPG key:
    * Follow: [Generate GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key)
    ```bash
@@ -132,94 +89,87 @@ Welcome to the Master of the Universe level! These expert-level exercises focus 
 6. Associate email with GPG key:
    * [Associate email with GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/associating-an-email-with-your-gpg-key)
 
-7. Make a signed commit:
+7. Make several signed commits:
    ```bash
-   echo "Signed commit test" > signed.txt
-   git add signed.txt
-   git commit -S -m "feat: Add signed commit test"
-   git log --show-signature -1
-   ```
-
-8. Push and verify on GitHub (should show "Verified" badge)
-
-**Tasks - Part B: Managing Sensitive Data**:
-1. **Prevention** - Create `.gitignore` to prevent accidental commits:
-   ```bash
-   # .gitignore
-   .env
-   .env.local
-   config/secrets.yml
-   *.key
-   *.pem
-   credentials.json
-   ```
-
-2. **Detection** - Use git-secrets or similar tools:
-   ```bash
-   # Install git-secrets
-   git secrets --install
-   git secrets --register-aws
-   ```
-
-3. **Remediation** - Remove accidentally committed secrets:
+   echo "Signed commit test 1" > signed-1.txt
+   git add signed-1.txt
+   git commit -S -m "feat: Add first signed commit"
    
-   **Option A: Using git-filter-repo (recommended)**
-   ```bash
-   # Install git-filter-repo
-   pip install git-filter-repo
+   echo "Signed commit test 2" > signed-2.txt
+   git add signed-2.txt
+   git commit -S -m "feat: Add second signed commit"
    
-   # Remove sensitive file from history
-   git filter-repo --path config/secrets.yml --invert-paths
-   
-   # Force push (WARNING: coordinate with team!)
-   git push origin --force --all
-   ```
-   
-   **Option B: Using BFG Repo-Cleaner**
-   ```bash
-   # Download BFG
-   # Remove file
-   bfg --delete-files secrets.yml
-   git reflog expire --expire=now --all
-   git gc --prune=now --aggressive
+   git log --show-signature -2
    ```
 
-4. **Best Practices**:
-   * Use environment variables for secrets
-   * Use secret management tools (HashiCorp Vault, AWS Secrets Manager)
-   * Use GitHub Secrets for CI/CD
-   * Rotate any exposed credentials immediately
-   * Enable secret scanning on GitHub
+8. Push and verify on GitHub (should show "Verified" badge on each commit)
 
-**Tasks - Part C: Security Audit**:
-1. Review your repository for security issues:
+### Part 4: Managing Sensitive Data Securely
+1. **Prevention** - Review and enhance `.gitignore`:
    ```bash
-   # Check for large files
+   # Ensure .gitignore includes common sensitive patterns:
+   # .env files
+   # API keys
+   # Credentials
+   # Private keys (.key, .pem files)
+   # etc.
+   ```
+
+2. **Detection** - Scan for potential secrets in repository history:
+   ```bash
+   # Check for sensitive patterns in commit history
+   git log -p | grep -i "password\|api_key\|secret\|token" | head -20
+   
+   # Check for large files that might contain sensitive data
    git rev-list --objects --all | \
      git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | \
      sed -n 's/^blob //p' | \
      sort --numeric-sort --key=2 | \
      tail -n 10
-   
-   # Check for sensitive patterns in history
-   git log -p | grep -i "password\|api_key\|secret"
    ```
 
-2. Enable GitHub security features:
-   * Go to Settings → Code security and analysis
-   * Enable: Dependency graph
-   * Enable: Dependabot alerts
-   * Enable: Dependabot security updates
-   * Enable: Secret scanning
-   * Enable: Code scanning (GitHub Advanced Security)
+3. **Understanding Remediation** - Know how to remove sensitive data if found:
+   * Research `git-filter-repo` or `BFG Repo-Cleaner`
+   * Understand the implications of rewriting history
+   * Know when to rotate credentials vs. removing from history
+   * Document the process even if not performing it
+
+4. **GitHub Security Features** - Enable on your repository:
+   * Navigate to Settings → Code security and analysis
+   * Review available features:
+     - Dependency graph
+     - Dependabot alerts
+     - Dependabot security updates
+     - Secret scanning (if available)
+     - Code scanning
+   * Enable what's available for your repository
+
+### Part 5: Security Audit and Best Practices
+1. Conduct a security review:
+   * Audit current repository for security issues
+   * Document any findings
+   * Review all commits for verification status
+   * Check protection rules are working as expected
+
+2. Document security best practices:
+   * Why GPG signing prevents impersonation
+   * How branch protection supports code quality
+   * Why sensitive data should never be committed
+   * Best practices for secret management (environment variables, secret vaults)
+   * Security in CI/CD pipelines
 
 **Success Criteria**:
-- All your commits are GPG signed and show "Verified" on GitHub
-- You have a comprehensive `.gitignore` file
-- You can identify and remove sensitive data from Git history
-- You understand prevention, detection, and remediation of security issues
-- Repository has all available security features enabled
-- You can perform a security audit of a repository
+- You have configured branch protection rules on GitHub for the main branch
+- You understand how CODEOWNERS work and when they're triggered
+- You can demonstrate the difference between protected and unprotected workflows
+- All your commits are GPG signed and show "Verified" badge on GitHub
+- You have configured automatic commit signing in Git
+- You have a comprehensive `.gitignore` file preventing sensitive data commits
+- You can identify sensitive patterns in repository history
+- You understand how to remove sensitive data from Git history (process, not necessarily execution)
+- You know when to rotate credentials vs. attempting history cleanup
+- Repository security features are enabled where available
+- You can articulate security best practices for professional team environments
 
 ---
 
@@ -246,56 +196,44 @@ git checkout -b group-X-outcomes/master-of-the-universe
 
 2. **Complete comprehensive documentation**:
 
-   **Exercise 1 - Branch Protection & Workflows**:
+   **Part 1 - Branch Protection Rules**:
+   - Screenshots of GitHub branch protection settings configured
+   - Explanation of each protection rule and its purpose
+   - Documentation referencing the CODEOWNERS file
+   - Evidence of how protections affect workflow
    
-   - **Branch Protection Configuration**:
-     - Screenshots of GitHub branch protection settings
-     - Explanation of each protection rule enabled
-     - Documentation of CODEOWNERS file
-     - Status checks configuration
+   **Part 2 - Protected Workflow Testing**:
+   - Demonstration of blocked direct push (screenshot or error message)
+   - Feature branch PR workflow documentation
+   - GitHub PR interface showing protection requirements
+   - Understanding of code owner review process
    
-   - **Protected Branch Workflow**:
-     - Demonstration of blocked direct push (screenshot/output)
-     - Complete PR workflow documentation
-     - PR review process
-     - Status check results
-     - Merge strategy chosen and why
+   **Part 3 - GPG Signing Setup**:
+   - GPG key generation output (you can redact sensitive parts)
+   - GitHub GPG key configuration screenshots
+   - Git configuration commands used
+   - `git log --show-signature` output showing multiple verified commits
+   - GitHub commits showing "Verified" badges (screenshots)
    
-   - **GitHub Actions Workflow**:
-     - Complete `.github/workflows/pr-checks.yml` file
-     - Workflow run results (screenshots)
-     - Explanation of each check
+   **Part 4 - Sensitive Data Management**:
+   - Review of `.gitignore` file ensuring comprehensive coverage
+   - Repository history scan for sensitive patterns (output)
+   - Documentation of remediation approaches (process understanding)
+   - Understanding of when to rotate credentials
    
-   **Exercise 2 - Security Best Practices**:
-   
-   - **GPG Setup (Critical)**:
-     - GPG key generation output (redact key ID if public)
-     - GitHub GPG key configuration screenshots
-     - Git configuration commands
-     - `git log --show-signature` output showing verified commits
-     - Multiple signed commits demonstrating consistency
-   
-   - **Sensitive Data Management**:
-     - Comprehensive `.gitignore` file content
-     - Documentation of files/patterns excluded
-     - Demonstration of secret detection (if using tools)
-     - Sensitive data removal demonstration:
-       - Before: Evidence of "sensitive" data in history
-       - Commands used (git-filter-repo or BFG)
-       - After: Clean history verification
-   
-   - **Security Audit**:
-     - Repository security scan results
-     - Large file analysis output
-     - Pattern search for potential secrets
-     - GitHub security features enabled (screenshots)
-     - Security recommendations document
+   **Part 5 - Security Audit and Best Practices**:
+   - Security audit findings from your repository
+   - GitHub security features enabled (screenshots)
+   - Best practices documentation:
+     * Why GPG signing prevents impersonation
+     * How branch protection supports secure collaboration
+     * Secret management best practices
 
 3. **Security-focused challenges**:
    - GPG configuration issues across OS/platforms?
    - Difficulties with commit signing in IDE/editor?
-   - Challenges removing sensitive data from complex history?
-   - Branch protection limitations or conflicts with workflow?
+   - Understanding branch protection trade-offs?
+   - Challenges scanning for sensitive patterns?
    - Balancing security with developer productivity?
 
 4. **Professional reflection** (minimum 250 words):
@@ -303,7 +241,7 @@ git checkout -b group-X-outcomes/master-of-the-universe
    - How do branch protection rules prevent security incidents?
    - What's your strategy for secret management in real projects?
    - How would you implement these practices in your organization?
-   - What trade-offs exist between security and velocity?
+   - What trade-offs exist between security and development velocity?
    - How do these practices integrate with DevSecOps principles?
 
 ### Step 3: Package Security Artifacts
@@ -312,41 +250,54 @@ Create organized security documentation:
 
 ```bash
 mkdir security-artifacts
-cp .gitignore security-artifacts/
-cp .github/workflows/pr-checks.yml security-artifacts/ 2>/dev/null || echo "No workflow file"
 # Export your public GPG key
 gpg --armor --export YOUR_KEY_ID > security-artifacts/public-key.asc
+# Copy relevant security documentation
+echo "Branch Protection Rules applied on GitHub" > security-artifacts/protection-rules.txt
 git add security-artifacts/
 ```
 
-### Step 4: Commit and Push (With Signature!)
+### Step 4: Commit and Push (With GPG Signature!)
 
 ```bash
 git add OUTCOMES.md security-artifacts/
 git commit -S -m "docs: Add master-of-the-universe level exercise outcomes for Group X"
-git log --show-signature -1  # Verify signature
+git log --show-signature -1  # Verify your signature
 git push origin group-X-outcomes/master-of-the-universe
 ```
 
 ### What to Include
 
-✅ **Exercise 1 Requirements**:
+✅ **Part 1 Requirements**:
 - Complete branch protection configuration with screenshots
-- CODEOWNERS file with meaningful entries
-- Working GitHub Actions workflow
-- Documented PR workflow from creation to merge
-- Evidence of blocked direct pushes
-- Status check execution results
-- Discussion of appropriate merge strategies
+- Explanation of each rule (PR reviews, signed commits, status checks, etc.)
+- CODEOWNERS file review and understanding
+- Discussion of security vs. workflow balance
 
-✅ **Exercise 2 Requirements**:
-- GPG key successfully configured and verified
-- Minimum 5 signed commits showing "Verified" badge
-- Comprehensive `.gitignore` (50+ entries recommended)
-- Successful sensitive data removal demonstration
-- Security audit with findings and recommendations
-- All GitHub security features documented
-- Public GPG key exported in security-artifacts/
+✅ **Part 2 Requirements**:
+- Evidence of blocked direct push attempt
+- Feature branch and PR creation workflow
+- GitHub PR interface showing active protections
+- Understanding of approval requirements
+
+✅ **Part 3 Requirements**:
+- GPG key successfully configured and added to GitHub
+- Minimum 5 signed commits showing "Verified" badge on GitHub
+- `git log --show-signature` output
+- Automatic signing configured in Git
+- Public GPG key in security-artifacts/
+
+✅ **Part 4 Requirements**:
+- Comprehensive `.gitignore` review
+- Repository scan for sensitive patterns (command output)
+- Understanding of data remediation approaches
+- Documentation of credential rotation best practices
+
+✅ **Part 5 Requirements**:
+- Security audit findings and recommendations
+- GitHub security features documented
+- Best practices guide for team implementation
+- Professional security mindset demonstrated
 
 ✅ **Security Best Practices Demonstrated**:
 - All submission commits are GPG signed
@@ -367,11 +318,11 @@ git push origin group-X-outcomes/master-of-the-universe
 
 | Criterion | Weight | Key Focus for Master of Universe |
 |-----------|--------|-----------------------------------|
-| Completion | 20% | All exercises with enterprise-grade implementations |
-| Understanding | 25% | Deep security knowledge, policy implications, trade-offs |
-| Practical Skills | 25% | Working GPG, proper protections, security tooling |
-| Problem-Solving | 20% | Security issues, configuration challenges, policy design |
-| **Security Practices** | 10% | Commit signing, secret management, audit capabilities |
+| Completion | 20% | Exercise completed with all parts and enterprise-grade implementations |
+| Understanding | 25% | Deep security knowledge, branch protection policies, GPG signing |
+| Practical Skills | 25% | Working GPG signatures, proper protections configured, security tooling |
+| Problem-Solving | 20% | Security configuration challenges, policy design decisions |
+| **Security Practices** | 10% | Commit signing consistency, secret management, audit capabilities |
 
 **Minimum score to complete training**: 85/100
 
