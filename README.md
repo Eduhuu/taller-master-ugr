@@ -9,7 +9,7 @@ This repository contains exercises across **four difficulty levels**, each in it
 
 ### 🌱 Newbie Level
 **Branch**: `newbie`  
-**Exercises**: 2  
+**Exercise**: 1  
 **Topics**:
 - Basic Git commands (init, clone, add, commit, status, log)
 - Creating and switching branches
@@ -23,12 +23,10 @@ git checkout newbie
 
 ### 🔧 Intermediate Level
 **Branch**: `intermediate`  
-**Exercises**: 3  
+**Exercise**: 1  
 **Topics**:
 - Merging branches and resolving conflicts
 - Using tags for releases
-- Stashing changes
-- Working with multiple remotes (adding/removing remotes)
 
 **Continue here**: You're now comfortable with basic Git but need to deepen your understanding of collaboration workflows.
 
@@ -38,11 +36,9 @@ git checkout intermediate
 
 ### 🎯 Master Level
 **Branch**: `master`  
-**Exercises**: 3  
+**Exercise**: 1  
 **Topics**:
 - Rewriting history (rebase, amend commits, interactive rebase)
-- Advanced branching strategies (Git Flow, GitHub Flow)
-- Using Git hooks for automation
 
 **Now is time for a level up. Continue here**: You want to master advanced Git techniques used in professional environments.
 
@@ -52,7 +48,7 @@ git checkout master
 
 ### 🌟 Master of the Universe Level
 **Branch**: `master-of-the-universe`  
-**Exercises**: 2  
+**Exercise**: 1  
 **Topics**:
 - Branch protection rules and secure workflows
 - Security best practices (GPG signing, managing sensitive data)
@@ -111,12 +107,12 @@ However, feel free to jump to any level that matches your current knowledge.
 
 ## 📊 Exercise Overview
 
-| Level | Exercises | Time Estimate | Key Skills |
-|-------|-----------|---------------|------------|
-| Newbie | 2 | 1-2 hours | Foundation & basics |
-| Intermediate | 3 | 2-3 hours | Collaboration & conflict resolution |
-| Master | 3 | 3-4 hours | Advanced techniques & automation |
-| Master of the Universe | 2 | 2-3 hours | Security & governance |
+| Level | Exercise | Time Estimate | Key Skills |
+|-------|----------|---------------|------------|
+| Newbie | 1 | 1-2 hours | Foundation & basics |
+| Intermediate | 1 | 2-3 hours | Collaboration & conflict resolution |
+| Master | 1 | 3-4 hours | Advanced techniques & automation |
+| Master of the Universe | 1 | 2-3 hours | Security & governance |
 
 ## 📤 Submitting Your Work
 

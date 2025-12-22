@@ -8,15 +8,15 @@
 
 ## 📋 Exercise Summary
 
-### Exercise 1: [Exercise Title]
+### Exercise: [Exercise Title]
 **Status**: ✅ Completed / ⏳ In Progress / ❌ Not Completed
 
 **What I did**:
-[Brief description of what you accomplished in this exercise]
+[Brief description of what you accomplished in this exercise. Since each level has one comprehensive exercise with multiple parts, describe your overall achievement and the key parts you completed.]
 
 **Commands Used**:
 ```bash
-# List the key Git commands you used
+# List the key Git commands you used across all parts of the exercise
 git command1
 git command2
 # etc.
@@ -34,31 +34,6 @@ def5678 fix: Resolve merge conflict
 **Screenshots** (if applicable):
 - [Screenshot 1: Description]
 - [Screenshot 2: Description]
-
----
-
-### Exercise 2: [Exercise Title]
-**Status**: ✅ Completed / ⏳ In Progress / ❌ Not Completed
-
-**What I did**:
-[Brief description of what you accomplished in this exercise]
-
-**Commands Used**:
-```bash
-# List the key Git commands you used
-```
-
-**Results/Output**:
-```
-# Paste relevant command outputs
-```
-
-**Screenshots** (if applicable):
-- [Screenshot description]
-
----
-
-### [Add more exercises as needed for your level]
 
 ---
 
@@ -146,7 +121,7 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 ## ✅ Completion Checklist
 
 Before submitting, ensure you have:
-- [ ] Completed all exercises for your chosen level
+- [ ] Completed the exercise for your chosen level (including all parts)
 - [ ] Documented all commands used with their outputs
 - [ ] Described challenges and how you resolved them
 - [ ] Provided a thoughtful reflection on your learning

@@ -21,25 +21,25 @@ Each student/group will be evaluated based on five core competencies:
 ### 1. Completion of Exercises (20 points)
 
 **Excellent (18-20 points)**
-- All exercises completed successfully
+- Exercise completed successfully with all parts documented
 - All required artifacts submitted (commands, outputs, reflections)
 - Outcome branch properly created and pushed to remote
 - Clear documentation of all steps taken
 
 **Good (14-17 points)**
-- Most exercises completed (80-99%)
+- Exercise mostly completed (80-99% of parts)
 - Minor missing documentation or artifacts
 - Outcome branch created with minor formatting issues
 - Generally clear documentation
 
 **Satisfactory (10-13 points)**
-- Majority of exercises completed (60-79%)
+- Majority of exercise completed (60-79% of parts)
 - Some missing documentation or incomplete outputs
 - Outcome branch may have organizational issues
 - Documentation needs improvement
 
 **Needs Improvement (0-9 points)**
-- Less than 60% of exercises completed
+- Less than 60% of exercise completed
 - Significant missing documentation
 - Outcome branch incomplete or improperly structured
 - Poor documentation quality
@@ -78,32 +78,34 @@ Each student/group will be evaluated based on five core competencies:
 
 **Key Concepts by Level**:
 
-**Newbie**:
+**Newbie** (1 comprehensive exercise):
 - Working directory, staging area, repository
 - Commit history and references
 - Local vs. remote repositories
 - Branch concept and HEAD pointer
+- Basic remote operations (push, pull)
 
-**Intermediate**:
+**Intermediate** (1 comprehensive exercise):
 - Merge strategies and conflict resolution
 - Fast-forward vs. three-way merge
+- Conflict markers and resolution techniques
 - Tags (lightweight vs. annotated)
-- Stash mechanism
-- Multiple remotes and tracking branches
+- Tag management and pushing tags to remote
 
-**Master**:
+**Master** (1 comprehensive exercise):
 - Rebase vs. merge (use cases and implications)
-- Interactive rebase operations
-- Git object model
-- Branching strategies (Git Flow, GitHub Flow)
-- Hook lifecycle and execution
+- Interactive rebase operations (fixup, squash, reword)
+- Commit amending
+- History rewriting best practices and dangers
+- Git object model and commit SHAs
 
-**Master of the Universe**:
-- Branch protection policies
+**Master of the Universe** (1 comprehensive exercise):
+- Branch protection policies and rules
 - GPG signing and verification
 - Git security model
-- History rewriting dangers
+- History rewriting dangers and remediation
 - Secret management strategies
+- Security auditing
 
 ---
 
@@ -143,30 +145,36 @@ Each student/group will be evaluated based on five core competencies:
 
 **Practical Skills by Level**:
 
-**Newbie**:
+**Newbie** (1 comprehensive exercise):
 - Proper use of add, commit, status, log
 - Creating and switching branches
 - Push and pull operations
 - Basic navigation of Git history
+- Working with feature branches
+- Understanding local vs. remote branches
 
-**Intermediate**:
+**Intermediate** (1 comprehensive exercise):
 - Effective merge conflict resolution
 - Proper tag creation and management
-- Appropriate use of stash
-- Managing multiple remotes
-- Understanding when to fetch vs. pull
+- Understanding different tag types
+- Pushing tags to remote
+- Reading conflict markers
+- Clean merge commit creation
 
-**Master**:
+**Master** (1 comprehensive exercise):
 - Safe history rewriting (amend, rebase)
 - Interactive rebase proficiency
-- Implementing branching strategies
-- Creating and using Git hooks
-- Choosing appropriate merge strategies
+- Understanding commit SHA changes
+- Choosing between rebase and merge
+- Using --force-with-lease safely
+- Creating clean, professional commit histories
 
-**Master of the Universe**:
+**Master of the Universe** (1 comprehensive exercise):
 - Configuring branch protection rules
 - Setting up GPG signing
-- Removing sensitive data from history
+- Creating verified commits
+- Identifying sensitive data patterns
+- Understanding secret remediation approaches
 - Implementing security workflows
 - Conducting security audits
 
@@ -205,28 +213,45 @@ Each student/group will be evaluated based on five core competencies:
 
 **Common Challenges by Level**:
 
-**Newbie**:
+**Newbie** (1 comprehensive exercise):
 - Understanding the staging area
 - Recovering from mistakes (detached HEAD, wrong commit)
 - SSH key configuration issues
+- Understanding local vs. remote branches
+- Managing feature branches and remote operations
 
-**Intermediate**:
+**Intermediate** (1 comprehensive exercise):
 - Merge conflicts (especially complex ones)
 - Understanding merge commit history
-- Remote tracking branch confusion
-- Knowing when to use stash vs. commit
+- Identifying and resolving conflict markers
+- Understanding different tag types
+- Knowing when to use annotated vs. lightweight tags
 
-**Master**:
+**Master** (1 comprehensive exercise):
 - Rebase conflicts and resolution
 - Understanding the implications of history rewriting
+- Interactive rebase operations and mistakes
+- Choosing between rebase and merge appropriately
+- Understanding when force push is safe
+- Recovery from bad rebases
+
+**Master of the Universe** (1 comprehensive exercise):
+- Configuring GPG properly across platforms
+- Understanding branch protection trade-offs
+- Identifying sensitive patterns in repository history
+- Understanding credential rotation strategies
+- Balancing security with usability
+- Configuring signed commits in various tools/IDEs
 - Hook debugging and execution issues
 - Choosing the right branching strategy
 
-**Master of the Universe**:
+**Master of the Universe** (1 comprehensive exercise):
 - Configuring GPG properly across platforms
-- Removing sensitive data from entire history
-- Understanding the limits of branch protection
+- Understanding branch protection trade-offs
+- Identifying sensitive patterns in repository history
+- Understanding credential rotation strategies
 - Balancing security with usability
+- Configuring signed commits in various tools/IDEs
 
 ---
 
@@ -280,7 +305,7 @@ Each student/group will be evaluated based on five core competencies:
 ### Step 1: Review Outcome Branch
 1. Checkout the student's outcome branch: `group-X-outcomes/<level>`
 2. Review the `OUTCOMES.md` file for completeness
-3. Verify all exercises have been documented
+3. Verify the exercise has been documented with all its parts
 
 ### Step 2: Verify Technical Execution
 1. Review git log to verify commands and workflow:
