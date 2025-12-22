@@ -211,6 +211,27 @@ See `EVALUATION_CRITERIA.md` for detailed rubric.
 - Collaborate with your group members
 
 ---
+## 🤖 Using GenAI Tools to Accelerate Your Learning
+
+### Recommended Approach
+
+#### ✅ Good Uses of AI
+
+- **Explaining concepts**: Ask AI to explain what a command does and why
+- **Debugging errors**: Share error messages to understand what went wrong
+- **Exploring alternatives**: "What's the difference between rebase and merge?"
+- **Reviewing your work**: Ask AI to review your git log and suggest improvements
+- **Learning best practices**: "What's a good commit message format?"
+- **Understanding documentation**: Have AI explain complex Git documentation
+
+#### ❌ Avoid These Pitfalls
+
+- Copying commands without understanding them
+- Having AI complete entire exercises without your participation
+- Submitting AI-generated reflections as your own thoughts
+- Using AI to skip the learning process entirely
+
+---
 
 ## 🤝 Contributing
 
