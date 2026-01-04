@@ -1,0 +1,4 @@
+Nombre: Eduardo
+Lenguaje de programación favorito: Python
+Por qué estoy aprendiendo Git: Para gestionar versiones de código y colaborar en proyectos de manera eficiente
+
