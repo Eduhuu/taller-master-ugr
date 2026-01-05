@@ -150,20 +150,20 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 
 | Topic | Confidence (1-5) | Notes |
 |-------|------------------|-------|
-| Basic Git commands | [ ] | |
-| Branching & merging | [ ] | |
-| Remote operations | [ ] | |
-| Conflict resolution | [ ] | |
-| History rewriting | [ ] | |
-| Git hooks | [ ] | |
-| Security practices | [ ] | |
+| Basic Git commands | [ ] | 5 |
+| Branching & merging | [ ] |4|
+| Remote operations | [ ] |3|
+| Conflict resolution | [ ] | 4|
+| History rewriting | [ ] | 2|
+| Git hooks | [ ] | 1|
+| Security practices | [ ] | 1|
 
 ---
 
 ## 🔗 Evidence/Artifacts
 
 **Links to branches/commits**:
-- Link to your outcome branch: `https://github.com/miguel-oltra/taller-master-ugr/tree/group-X-outcomes/[level]`
+- Link to your outcome branch: `https://github.com/Eduhuu/taller-master-ugr/tree/group-DS01-outcomes/intermediate`
 - Key commits demonstrating your work:
   - Commit hash: efc7ec25147b88b136a1359ba8a1adce2f56def4. Commit donde se hizo el merge con los conflictos
 
@@ -192,5 +192,5 @@ Before submitting, ensure you have:
 
 ---
 
-**Submission Date**: [Date]  
-**Ready for Review**: ✅ Yes / ❌ No
+**Submission Date**: [01/05/2026]  
+**Ready for Review**: ✅ Yes
