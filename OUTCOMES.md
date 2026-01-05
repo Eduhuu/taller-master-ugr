@@ -156,13 +156,13 @@ Rate your confidence level for each topic (1-5, where 5 is very confident):
 
 | Topic | Confidence (1-5) | Notes |
 |-------|------------------|-------|
-| Basic Git commands | [ ] | |
-| Branching & merging | [ ] | |
-| Remote operations | [ ] | |
-| Conflict resolution | [ ] | |
-| History rewriting | [ ] | |
-| Git hooks | [ ] | |
-| Security practices | [ ] | |
+| Basic Git commands | [ ] | 5 |
+| Branching & merging | [ ] |4|
+| Remote operations | [ ] |3|
+| Conflict resolution | [ ] | 4|
+| History rewriting | [ ] | 2|
+| Git hooks | [ ] | 1|
+| Security practices | [ ] | 1|
 
 ---
 
@@ -199,5 +199,5 @@ Before submitting, ensure you have:
 
 ---
 
-**Submission Date**: [Date]  
-**Ready for Review**: ✅ Yes / ❌ No
+**Submission Date**: [01/05/2026]  
+**Ready for Review**: ✅ Yes
