@@ -197,23 +197,36 @@ git checkout -b group-X-outcomes/master-of-the-universe
 2. **Complete comprehensive documentation**:
 
    **Part 1 - Branch Protection Rules**:
-   - Screenshots of GitHub branch protection settings configured
-   - Explanation of each protection rule and its purpose
-   - Documentation referencing the CODEOWNERS file
-   - Evidence of how protections affect workflow
+
+   Estas son las [reglas](reglas.png) se se implementaron en el fork par aproteger main:
    
-   **Part 2 - Protected Workflow Testing**:
-   - Demonstration of blocked direct push (screenshot or error message)
-   - Feature branch PR workflow documentation
-   - GitHub PR interface showing protection requirements
-   - Understanding of code owner review process
+   - Aquí tienes un resumen ultra directo para que entiendas la función de cada una:
+
+   - Require a pull request: Prohíbe subir cambios directos; todo debe pasar por revisión.
+
+   - Require approvals: Obliga a que otros den el "visto bueno" antes de unir el código.
+
+   - Dismiss stale approvals: Si el código cambia tras ser aprobado, la aprobación se anula.
+
+   - Require review from Code Owners: Exige la firma del experto responsable de esa área específica.
+
+   - Require status checks: Obliga a que los tests automáticos pasen primero.
+
+   - Require branches to be up to date: Exige que tu rama incluya lo más reciente de la principal.
+
+   - Require conversation resolution: No permite cerrar el PR si hay dudas o hilos sin resolver.
+
+   - Require signed commits: Verifica la identidad real del autor mediante firmas digitales.
+
+   - Do not allow bypassing: Las reglas aplican para todos, incluidos los administradores.
+
+Para evidenciar como estas reglas protegieron la rama [la imagen](push_block.png) lo ilustra.
+
+Hablando sobre el archivo CODEOWNERS este archivo gestiona la propiedad del código y automatiza las revisiones en este repositorio de entrenamiento.
    
    **Part 3 - GPG Signing Setup**:
-   - GPG key generation output (you can redact sensitive parts)
-   - GitHub GPG key configuration screenshots
-   - Git configuration commands used
-   - `git log --show-signature` output showing multiple verified commits
-   - GitHub commits showing "Verified" badges (screenshots)
+   
+   Se configuro GPG para el firmado de los commits, [esta imagen](signed_commit.png) muestra la placa de verificado.
    
    **Part 4 - Sensitive Data Management**:
    - Review of `.gitignore` file ensuring comprehensive coverage
